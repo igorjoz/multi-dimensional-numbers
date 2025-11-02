@@ -1,0 +1,446 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% --- język, polskie ogonki ---
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% --- trochę ładniej ---
+\usetheme{Madrid}
+\usecolortheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+
+% matematyka
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{bm}
+
+% grafiki
+\usepackage{graphicx}
+\graphicspath{{./}{./img/}}
+
+% tabelki
+\usepackage{booktabs}
+\usepackage{array}
+\newcolumntype{C}{>{\centering\arraybackslash}m{1.7cm}}
+
+% żeby małe napisy pod wzorami wyglądały normalnie
+\newcommand{\tinyit}[1]{\tiny\textit{#1}}
+
+% -------------------------------------------------
+% Informacje tytułowe
+% -------------------------------------------------
+\title[Liczby wielowymiarowe]{Liczby wielowymiarowe:\\
+od liczb zespolonych do kwaternionów\\
+(+ oktoniony jako ciekawostka)}
+\author{Igor Józefowicz}
+\institute{Politechnika Gdańska}
+\date{2025}
+
+% =================================================
+\begin{document}
+% =================================================
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% -------------------------------------------------
+\begin{frame}{Plan prezentacji}
+  \tableofcontents
+\end{frame}
+
+% =================================================
+\section{Motywacja i historia}
+% =================================================
+
+\begin{frame}{Dlaczego w ogóle ``liczby wielowymiarowe''?}
+  \begin{itemize}
+    \item Liczby rzeczywiste $\mathbb{R}$ opisują długości, pomiary, ciągłe wartości.
+    \item Ale równanie $x^2 + 1 = 0$ \textbf{nie ma} rozwiązania w $\mathbb{R}$.
+    \item Dodajemy więc nowy obiekt $i$ taki, że $i^2=-1$.
+    \item Dostajemy liczby zespolone $\mathbb{C}$, które są już \textbf{dwuwymiarowe}.
+    \item Potem spróbujemy pójść dalej: 4 wymiary (kwaterniony), 8 wymiarów (oktoniony).
+  \end{itemize}
+
+  \vspace{0.3cm}
+  Idea: \textbf{rozszerzamy pojęcie liczby}, żeby mieć lepsze modele obrotów, fal, sygnałów, ruchu 3D, itp.
+\end{frame}
+
+\begin{frame}{Krótka historia}
+  \begin{itemize}
+    \item XVIII w.: Euler, Gauss -- porządne zdefiniowanie liczb zespolonych.
+    \item 1843: William Rowan Hamilton wprowadza \textbf{kwaterniony} $\mathbb{H}$.
+    \item 1845: Cayley i Graves konstruują \textbf{oktoniony} $\mathbb{O}$.
+  \end{itemize}
+
+  \vspace{0.4cm}
+  \textbf{Anegdota:} 16 października 1843 Hamilton wyrył wzór
+  $i^2 = j^2 = k^2 = ijk = -1$
+  na moście Broom Bridge w Dublinie.
+
+  \vspace{0.4cm}
+  W XXI w.: kwaterniony są standardowo używane w grafice 3D (Unity, Blender), dronach i satelitach.
+\end{frame}
+
+
+% =================================================
+\section{Liczby zespolone $\mathbb{C}$}
+% =================================================
+
+\begin{frame}{Definicja liczb zespolonych}
+  \begin{block}{Definicja}
+    $\displaystyle
+    \mathbb{C} = \{ a + bi : a,b \in \mathbb{R}, \ i^2 = -1 \}.
+    $
+  \end{block}
+
+  \begin{itemize}
+    \item $a$ -- część rzeczywista, $\Re(z)$,
+    \item $b$ -- część urojona, $\Im(z)$.
+    \item Każde $z = a+bi$ to punkt $(a,b)$ na płaszczyźnie.
+  \end{itemize}
+
+  \vspace{0.3cm}
+  \textbf{Wniosek:} $\mathbb{C}$ jest \textbf{2-wymiarową} przestrzenią nad $\mathbb{R}$.
+
+  \vspace{0.3cm}
+  \textbf{Sprzężenie:} $\overline{a+bi} = a-bi$.\\
+  \textbf{Moduł:} $|a+bi| = \sqrt{a^2+b^2}$.
+\end{frame}
+
+\begin{frame}{Działania w $\mathbb{C}$}
+  Niech $z_1=a+bi$, $z_2=c+di$.
+  \begin{itemize}
+    \item Dodawanie:
+    \[
+    z_1+z_2 = (a+c) + (b+d)i
+    \]
+    \item Mnożenie:
+    \[
+    z_1 z_2 = (ac - bd) + (ad+bc)i
+    \]
+    \item Dzielenie:
+    \[
+    \frac{z_1}{z_2} =
+    \frac{(a+bi)(c-di)}{c^2+d^2}
+    = \frac{(ac+bd)+(bc-ad)i}{c^2+d^2}
+    \]
+  \end{itemize}
+
+  \vspace{0.3cm}
+  \textbf{Własność kluczowa:}
+  \[
+  |z_1 z_2| = |z_1|\,|z_2|
+  \quad\text{oraz}\quad
+  \arg(z_1 z_2) = \arg(z_1)+\arg(z_2).
+  \]
+  \tinyit{czyli mnożenie liczby zespolonej to: skalowanie + obrót na płaszczyźnie}
+\end{frame}
+
+\begin{frame}{Zastosowania liczb zespolonych}
+  \begin{itemize}
+    \item \textbf{Fizyka / sygnały}: prąd przemienny $I(t)=I_0 e^{i\omega t}$, impedancja, faza.
+    \item \textbf{Mechanika kwantowa}: funkcja falowa $\psi(x)$ jest zespolona.
+    \item \textbf{Grafika 2D}: obrót punktu $(x,y)$ o kąt $\theta$ to mnożenie przez $e^{i\theta}$.
+  \end{itemize}
+
+  \vspace{0.4cm}
+  \textbf{Przykład obrotu o 90$^\circ$:}\\[4pt]
+  $z = 1+0i$, \quad $e^{i\pi/2} = i$ \\[4pt]
+  $z' = z \cdot i = i$\\
+  Punkt $(1,0)$ przechodzi w $(0,1)$.
+\end{frame}
+
+
+% =================================================
+\section{Kwaterniony $\mathbb{H}$}
+% =================================================
+
+\begin{frame}{Przejście do kwaternionów}
+  Pytanie Hamiltona: \\
+  \emph{czy da się zrobić coś jak liczby zespolone, ale dla pełnych obrotów 3D?}
+
+  \vspace{0.3cm}
+  Odpowiedź:
+  \begin{block}{Definicja}
+    $\displaystyle
+    \mathbb{H} = \{ a + bi + cj + dk : a,b,c,d \in \mathbb{R} \}
+  $
+  gdzie jednostki $i,j,k$ spełniają
+  \[
+    i^2 = j^2 = k^2 = ijk = -1.
+  \]
+  \end{block}
+
+  \begin{itemize}
+    \item To już \textbf{4-wymiarowa} przestrzeń nad $\mathbb{R}$.
+    \item Każdy kwaternion ma część skalarną ($a$) i wektorową ($(b,c,d)$).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Tabela mnożenia}
+  Podstawowe reguły:
+  \[
+    ij = k,\quad jk = i,\quad ki = j,
+  \]
+  \[
+    ji = -k,\quad kj = -i,\quad ik = -j.
+  \]
+
+  \vspace{0.3cm}
+  Zauważ:
+  \[
+    ij \neq ji.
+  \]
+
+  \vspace{0.3cm}
+  \textbf{Wniosek:} Mnożenie kwaternionów \textbf{nie jest przemienne}.
+
+  \vspace{0.4cm}
+  \textbf{Mini-przykład:}
+  \[
+    (1+i)(1+j)=1+i+j+k.
+  \]
+
+  \vspace{0.2cm}
+  To jest dokładnie typ slajdu, który prowadzący chciał: definicja + przykład rachunkowy.
+\end{frame}
+
+\begin{frame}{Działania w $\mathbb{H}$}
+  Niech
+  $
+    q_1 = a+bi+cj+dk, \quad
+    q_2 = e+fi+gj+hk.
+  $
+  \begin{itemize}
+    \item Dodawanie: współrzędnie, jak w $\mathbb{R}^4$.
+    \item Mnożenie: korzystamy z tabelki $ij=k$, $ji=-k$, itd.
+    \item Sprzężenie:
+    \[
+      \overline{q} = a-bi-cj-dk.
+    \]
+    \item Norma:
+    \[
+      \lVert q\rVert = \sqrt{a^2+b^2+c^2+d^2}.
+    \]
+    \item Odwrotność (jeśli $q\neq 0$):
+    \[
+      q^{-1} = \frac{\overline{q}}{\lVert q\rVert^2}.
+    \]
+  \end{itemize}
+
+  \vspace{0.2cm}
+  \textbf{Ważne:} Każdy niezerowy kwaternion ma odwrotność.\\
+  To znaczy, że w $\mathbb{H}$ można \textbf{dzielić}.
+\end{frame}
+
+\begin{frame}{Kwaterniony a rotacje 3D}
+  \textbf{Cel praktyczny:} opisać obrót wektora 3D bez niestabilności numerycznych.
+
+  \vspace{0.2cm}
+  Kwaternion jednostkowy $q$ (tzn. $\lVert q\rVert=1$) reprezentuje pewien obrót
+  w przestrzeni 3D.
+
+  \vspace{0.2cm}
+  Jeśli mamy wektor $\vec{v}$, traktujemy go jako czysto wektorowy kwaternion
+  $0 + v_x i + v_y j + v_z k$ i liczymy:
+  \[
+    \vec{v}' = q \, \vec{v} \, q^{-1}.
+  \]
+
+  \vspace{0.4cm}
+  \textbf{Własność kluczowa:} długość $\|\vec{v}\|$ się nie zmienia.
+  To znaczy: to jest \emph{czysty obrót}, bez rozciągania.
+
+  \vspace{0.4cm}
+  Dlatego kwaterniony są używane w \textbf{Unity, Blenderze, silnikach gier,
+  dronach, nawigacji satelitarnej}.
+\end{frame}
+
+\begin{frame}{Stabilność numeryczna / Euler vs kwaterniony}
+  \begin{itemize}
+    \item W opisie obrotu przez kąty Eulera pojawia się problem \textbf{gimbal lock}
+    (dwie osie pokrywają się i tracimy jeden stopień swobody).
+    \item Kąty Eulera są też podatne na kumulację błędu przy wielokrotnych
+    obrotach/aktualizacjach.
+    \item Kwaterniony jednostkowe można po prostu normalizować
+    (sprowadzać z powrotem do długości 1)
+    i zachować stabilność obrotu numerycznie.
+  \end{itemize}
+
+  \vspace{0.4cm}
+  \textbf{W praktyce:} silniki gier i narzędzia 3D trzymają orientację
+  obiektu właśnie jako kwaternion, nie jako $(yaw,pitch,roll)$.
+\end{frame}
+
+\begin{frame}{Kwaterniony jako macierze $2\times 2$ zespolone}
+  Istnieje odwzorowanie
+  \[
+    a+bi+cj+dk
+    \quad \longmapsto \quad
+    \begin{pmatrix}
+      a+bi & c+di \\
+      -c+di & a-bi
+    \end{pmatrix}
+  \]
+
+  \begin{itemize}
+    \item Mnożenie kwaternionów odpowiada mnożeniu tych macierzy.
+    \item Norma kwaternionu wiąże się z wyznacznikiem takiej macierzy.
+    \item To połączenie pokazuje, że kwaterniony są głęboko związane
+    z macierzami obrotu i ogólnie z algebrą macierzową.
+  \end{itemize}
+
+  \vspace{0.3cm}
+  Ten slajd spełnia wymaganie prowadzącego: ``kwaterniony jako macierze $2\times 2$
+  liczb zespolonych''.
+\end{frame}
+
+
+% =================================================
+\section{Konstrukcja Cayley--Dicksona}
+% =================================================
+
+\begin{frame}{Podwajanie wymiaru: konstrukcja Cayley--Dicksona}
+  \begin{itemize}
+    \item Istnieje ogólny sposób budowania kolejnych systemów liczbowych
+    przez \textbf{podwajanie wymiaru}.
+    \item Zaczynamy od $\mathbb{R}$ (1 wymiar).
+    \item Robimy z tego uporządkowaną parę liczb rzeczywistych:
+    dostajemy $\mathbb{C}$ (2 wymiary).
+    \item Potem pary liczb zespolonych $\Rightarrow$ kwaterniony $\mathbb{H}$ (4 wymiary).
+    \item Potem pary kwaternionów $\Rightarrow$ oktoniony $\mathbb{O}$ (8 wymiarów).
+  \end{itemize}
+
+  \vspace{0.3cm}
+  Ten proces nazywa się \textbf{konstrukcją Cayley--Dicksona}.
+\end{frame}
+
+\begin{frame}{Co tracimy przy każdym podwojeniu?}
+  \begin{itemize}
+    \item $\mathbb{R}$: uporządkowane, przemienne, łączne, można dzielić.
+    \item $\mathbb{C}$: nie jest już ``uporządkowane'' w sensie zgodnym z mnożeniem,
+    ale nadal przemienne i łączne, można dzielić.
+    \item $\mathbb{H}$: \textbf{nie jest przemienne}, ale nadal łączne, można dzielić.
+    \item $\mathbb{O}$: \textbf{nie jest przemienne ani łączne}, ale jest tzw.
+    ``alternatywne'' i nadal można dzielić.
+  \end{itemize}
+
+  \vspace{0.4cm}
+  Dalej (16 wymiarów: \textbf{sedeniony}) tracimy nawet możliwość dzielenia:
+  pojawiają się dzielniki zera $\Rightarrow$ algebra psuje się dla zastosowań
+  numerycznych.
+\end{frame}
+
+\begin{frame}{Tabela własności (schematycznie)}
+  \scriptsize
+  \centering
+  \begin{tabular}{lC C C C C C}
+    \toprule
+     & \textbf{Wymiar} & \textbf{Uporządk.} & \textbf{Przem.} & \textbf{Łączne} & \textbf{Dzielenie} & \textbf{Brak dzieln. zera}\\
+    \midrule
+    $\mathbb{R}$ (rzeczywiste)      & 1  & tak & tak & tak & tak & tak \\
+    $\mathbb{C}$ (zespolone)        & 2  & nie & tak & tak & tak & tak \\
+    $\mathbb{H}$ (kwaterniony)      & 4  & nie & nie & tak & tak & tak \\
+    $\mathbb{O}$ (oktoniony)        & 8  & nie & nie & nie & tak & tak \\
+    sedeniony itd.                  & 16 & nie & nie & nie & \textbf{nie} & \textbf{nie} \\
+    \bottomrule
+  \end{tabular}
+
+  \vspace{0.4cm}
+  \tinyit{inspiracja: klasyczna tabela własności algebr Cayley--Dicksona}
+\end{frame}
+
+
+% =================================================
+\section{Oktoniony (ciekawostka)}
+% =================================================
+
+\begin{frame}{Oktoniony w dwóch zdaniach}
+  \begin{itemize}
+    \item Oktoniony $\mathbb{O}$ są 8-wymiarowe i mają 7 ``jednostek urojonych''.
+    \item Mnożenie nie jest już nawet łączne,
+    ale ciągle można dzielić (nie ma dzielników zera).
+  \end{itemize}
+
+  \vspace{0.3cm}
+  Zastosowania:
+  \begin{itemize}
+    \item teoretyczna fizyka wysokich energii, symetrie wyjątkowe (tzw. grupy wyjątkowe),
+    \item matematyka czysto abstrakcyjna.
+  \end{itemize}
+
+  \vspace{0.3cm}
+  W praktyce inżynierskiej (grafika 3D, robotyka, Unity, Blender): \textbf{używamy kwaternionów, nie oktonionów.}
+\end{frame}
+
+
+% =================================================
+\section{Porównanie i podsumowanie}
+% =================================================
+
+\begin{frame}{Różnice w działaniach}
+  \begin{itemize}
+    \item W $\mathbb{C}$: mnożenie jest przemienne ($zw=wz$).
+    \item W $\mathbb{H}$: mnożenie \textbf{nie} jest przemienne ($ij = k$, ale $ji=-k$),
+    ale jest łączne.
+    \item W $\mathbb{O}$: nawet łączność pada, tzn.
+    $(ab)c \neq a(bc)$ w ogólności.
+  \end{itemize}
+
+  \vspace{0.4cm}
+  \textbf{Intuicja:}
+  Im większy wymiar (2,4,8,16,\dots), tym więcej swobody,
+  ale płacimy za to utratą ``ładnych'' własności algebraicznych.
+\end{frame}
+
+\begin{frame}{Dlaczego w praktyce wygrywają kwaterniony?}
+  \begin{itemize}
+    \item Mają skończoną, zwartą reprezentację obrotu 3D.
+    \item Dają się stabilnie normalizować numerycznie.
+    \item Nie mają problemu gimbal lock, w przeciwieństwie do kątów Eulera.
+    \item Są wspierane natywnie przez silniki gier (Unity), narzędzia 3D (Blender),
+    biblioteki grafiki, kontrolery lotu dronów.
+    \item Nadal można je mnożyć i dzielić (czyli mamy sensowną algebrę).
+  \end{itemize}
+
+  \vspace{0.3cm}
+  \textbf{Wniosek praktyczny:} kwaterniony to nie tylko ciekawostka matematyczna.
+  To narzędzie inżynierskie.
+\end{frame}
+
+\begin{frame}{Podsumowanie}
+  \begin{itemize}
+    \item Liczby wielowymiarowe powstają przez kolejne rozszerzenia:
+    \[
+      \mathbb{R} \rightarrow \mathbb{C} \rightarrow \mathbb{H} \rightarrow \mathbb{O} \rightarrow \dots
+    \]
+    (konstrukcja Cayley--Dicksona).
+    \item Każde rozszerzenie podwaja wymiar, ale \textbf{psuje} jakąś własność
+    (najpierw ``porządek'', potem przemienność, potem łączność itd.).
+    \item Kwaterniony są kluczowe praktycznie:
+      opisują obroty 3D w stabilny numerycznie sposób.
+    \item Oktoniony i dalej są głównie ciekawostką teoretyczną
+      (fizyka teoretyczna, struktury wyjątkowe), bo tracimy już zbyt wiele własności.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Źródła}
+  \scriptsize
+  \begin{itemize}
+    \item R. Hamilton: prace o kwaternionach (1843).
+    \item J. Baez, ``The Octonions'', Bulletin AMS, 2002.
+    \item A. Kuipers, ``Quaternions and Rotation Sequences'', Princeton, 1999.
+    \item Materiały nt. konstrukcji Cayley--Dicksona (Cayley--Dickson construction).
+    \item ``Aksjomaty i konstrukcje liczb'', Wikipedia PL.
+    \item Dokumentacja Unity / Blender: reprezentacja rotacji przez kwaterniony.
+  \end{itemize}
+
+  \vspace{0.3cm}
+  \tinyit{Prezentacja przygotowana w \LaTeX{} beamer, zgodnie z wymaganiami seminarium
+           (definicje, przykłady rachunkowe, jedno rozumowanie, zastosowania, tło historyczne).}
+\end{frame}
+
+% =================================================
+\end{document}
