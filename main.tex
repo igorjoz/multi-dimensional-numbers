@@ -16,8 +16,10 @@
 \usepackage{bm}
 
 % grafiki
+\usepackage{hyperref}
 \usepackage{graphicx}
-\graphicspath{{./}{./img/}}
+\usepackage{svg}
+\graphicspath{{./}{./img/}{./images/}}
 
 % tabelki
 \usepackage{booktabs}
@@ -46,6 +48,8 @@
   \tableofcontents
 \end{frame}
 
+% (przeniesiono slajd Broom Bridge za "Krótka historia")
+
 % =================================================
 \section{Motywacja i historia}
 % =================================================
@@ -69,18 +73,50 @@
 
 \begin{frame}{Krótka historia}
   \begin{itemize}
-    \item XVIII w.: Euler, Gauss -- porządne zdefiniowanie liczb zespolonych.
+    \item XVIII w.: Euler, Gauss -- zdefiniowanie liczb zespolonych.
     \item 1843: William Rowan Hamilton wprowadza \textbf{kwaterniony} $\mathbb{H}$.
     \item 1845: Cayley i Graves konstruują \textbf{oktoniony} $\mathbb{O}$.
   \end{itemize}
 
-  \vspace{0.4cm}
-  \textbf{Anegdota:} 16 października 1843 Hamilton wyrył wzór
+  \vspace{0.2cm}
+  \begin{columns}[T,totalwidth=\textwidth]
+    \begin{column}{0.33\textwidth}
+      \centering
+      \includegraphics[height=0.35\textheight,keepaspectratio]{Leonhard_Euler_-_Jakob_Emanuel_Handmann_(Kunstmuseum_Basel).jpg}\\[2pt]
+      {\scriptsize Euler}
+
+      \vspace{2pt}
+      {\tinyit{Źródło: \url{https://en.wikipedia.org/wiki/File:Leonhard_Euler_-_Jakob_Emanuel_Handmann_(Kunstmuseum_Basel).jpg}}}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \centering
+      \includegraphics[height=0.35\textheight,keepaspectratio]{Carl_Friedrich_Gauss.jpg}\\[2pt]
+      {\scriptsize Gauss}
+
+      \vspace{2pt}
+      {\tinyit{Źródło: \url{https://commons.wikimedia.org/wiki/File:Carl_Friedrich_Gauss.jpg}}}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+      \centering
+      \includegraphics[height=0.35\textheight,keepaspectratio]{William_Rowan_Hamilton_portrait_oval_combined.png}\\[2pt]
+      {\scriptsize Hamilton}
+
+      \vspace{2pt}
+      {\tinyit{Źródło: \url{https://commons.wikimedia.org/wiki/File:William_Rowan_Hamilton_portrait_oval_combined.png}}}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Hamilton i Broom Bridge (1843)}
+  	\textbf{Anegdota:} 16 października 1843 Hamilton wyrył wzór
   $i^2 = j^2 = k^2 = ijk = -1$
   na moście Broom Bridge w Dublinie.
 
-  \vspace{0.4cm}
-  W XXI w.: kwaterniony są standardowo używane w grafice 3D (Unity, Blender), dronach i satelitach.
+  \vspace{0.3cm}
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{broom_bridge_plaque.jpg}\\
+    {\tinyit{Źródło: \url{https://upload.wikimedia.org/wikipedia/commons/5/53/Broom_bridge_plaque.jpg}}}
+  \end{center}
 \end{frame}
 
 
@@ -89,24 +125,33 @@
 % =================================================
 
 \begin{frame}{Definicja liczb zespolonych}
-  \begin{block}{Definicja}
-    $\displaystyle
-    \mathbb{C} = \{ a + bi : a,b \in \mathbb{R}, \ i^2 = -1 \}.
-    $
-  \end{block}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Definicja}
+        $\displaystyle
+        \mathbb{C} = \{ a + bi : a,b \in \mathbb{R}, \ i^2 = -1 \}.
+        $
+      \end{block}
 
-  \begin{itemize}
-    \item $a$ -- część rzeczywista, $\Re(z)$,
-    \item $b$ -- część urojona, $\Im(z)$.
-    \item Każde $z = a+bi$ to punkt $(a,b)$ na płaszczyźnie.
-  \end{itemize}
+      \begin{itemize}
+        \item $a$ -- część rzeczywista, $\Re(z)$,
+        \item $b$ -- część urojona, $\Im(z)$.
+        \item Każde $z = a+bi$ to punkt $(a,b)$ na płaszczyźnie.
+      \end{itemize}
 
-  \vspace{0.3cm}
-  \textbf{Wniosek:} $\mathbb{C}$ jest \textbf{2-wymiarową} przestrzenią nad $\mathbb{R}$.
+      \vspace{0.1cm}
+      \textbf{Wniosek:} $\mathbb{C}$ jest \textbf{2-wymiarową} przestrzenią nad $\mathbb{R}$.
 
-  \vspace{0.3cm}
-  \textbf{Sprzężenie:} $\overline{a+bi} = a-bi$.\\
-  \textbf{Moduł:} $|a+bi| = \sqrt{a^2+b^2}$.
+      \vspace{0.1cm}
+      \textbf{Sprzężenie:} $\overline{a+bi} = a-bi$.\\
+      \textbf{Moduł:} $|a+bi| = \sqrt{a^2+b^2}$.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \centering
+      \includesvg[width=0.8\textwidth]{Complex_number_illustration.svg}\\[5pt]
+      \tinyit{Źródło: \url{https://commons.wikimedia.org/wiki/File:Complex_number_illustration.svg}}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Działania w $\mathbb{C}$}
