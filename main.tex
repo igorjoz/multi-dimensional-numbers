@@ -60,7 +60,7 @@
     \item Ale równanie $x^2 + 1 = 0$ \textbf{nie ma} rozwiązania w $\mathbb{R}$.
     \item Dodajemy więc nowy obiekt $i$ taki, że $i^2=-1$.
     \item Dostajemy liczby zespolone $\mathbb{C}$, które są już \textbf{dwuwymiarowe}.
-    \item Potem spróbujemy pójść dalej: 4 wymiary (kwaterniony), 8 wymiarów (oktoniony).
+    \item Potem przejdziemy do 4 wymiarów (kwaterniony) i 8 wymiarów (oktoniony).
   \end{itemize}
 
   \vspace{0.1cm}
@@ -170,18 +170,28 @@
   \]
 \end{frame}
 
-\begin{frame}{Zastosowania liczb zespolonych}
+\begin{frame}{Zastosowania liczba zespolonych: Przetwarzanie sygnałów}
   \begin{itemize}
-    \item \textbf{Fizyka / sygnały}: prąd przemienny $I(t)=I_0 e^{i\omega t}$, impedancja, faza.
-    \item \textbf{Mechanika kwantowa}: funkcja falowa $\psi(x)$ jest zespolona.
-    \item \textbf{Grafika 2D}: obrót punktu $(x,y)$ o kąt $\theta$ to mnożenie przez $e^{i\theta}$.
+    \item Liczby zespolone są fundamentalne w analizie sygnałów (dźwięk, obraz, radio).
+    \item Wzór Eulera $e^{i\omega t} = \cos(\omega t) + i\sin(\omega t)$ pozwala reprezentować sygnał jako sumę fal o danej amplitudzie i fazie.
   \end{itemize}
+  \begin{center}
+    \includesvg[width=0.4\textwidth]{images/FFT_of_Cosine_Summation_Function.svg}
+    \\
+    {\tinyit{Źródło: \url{https://commons.wikimedia.org/wiki/File:FFT_of_Cosine_Summation_Function.svg}}}
+  \end{center}
+\end{frame}
 
-  \vspace{0.4cm}
-  \textbf{Przykład obrotu o 90$^\circ$:}\\[4pt]
-  $z = 1+0i$, \quad $e^{i\pi/2} = i$ \\[4pt]
-  $z' = z \cdot i = i$\\
-  Punkt $(1,0)$ przechodzi w $(0,1)$.
+\begin{frame}{Zastosowania liczb zespolonych: Sieci neuronowe}
+    \begin{itemize}
+        \item \textbf{Zespolone sieci neuronowe} (Complex-Valued Neural Networks, CVNN) to rozszerzenie klasycznych sieci, gdzie wagi, biasy i aktywacje są liczbami zespolonymi.
+        \item \textbf{Zalety:}
+        \begin{itemize}
+            \item Naturalnie przetwarzają dane zespolone, np. z radaru, sonaru, MRI, zachowując informację o fazie.
+            \item Pojedynczy neuron zespolony może być bardziej wyrazisty niż dwa neurony rzeczywiste.
+            \item Lepsze zdolności do generalizacji w problemach z falami i oscylacjami.
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 
@@ -211,34 +221,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Tabela mnożenia}
-  Podstawowe reguły:
-  \[
-    ij = k,\quad jk = i,\quad ki = j,
-  \]
-  \[
-    ji = -k,\quad kj = -i,\quad ik = -j.
-  \]
-
-  \vspace{0.3cm}
-  Zauważ:
-  \[
-    ij \neq ji.
-  \]
-
-  \vspace{0.3cm}
-  \textbf{Wniosek:} Mnożenie kwaternionów \textbf{nie jest przemienne}.
-
-  \vspace{0.4cm}
-  \textbf{Mini-przykład:}
-  \[
-    (1+i)(1+j)=1+i+j+k.
-  \]
-
-  \vspace{0.2cm}
-  
-\end{frame}
-
 \begin{frame}{Hamilton i Broom Bridge (1843)}
   	\textbf{Anegdota:} 16 października 1843 Hamilton wyrył wzór
   $i^2 = j^2 = k^2 = ijk = -1$
@@ -249,6 +231,28 @@
     \includegraphics[width=0.5\textwidth]{broom_bridge_plaque.jpg}\\
     {\tinyit{Źródło: \url{https://upload.wikimedia.org/wikipedia/commons/5/53/Broom_bridge_plaque.jpg}}}
   \end{center}
+\end{frame}
+
+\begin{frame}{Tabela mnożenia}
+  Podstawowe reguły:
+  \[
+    ij = k,\quad jk = i,\quad ki = j,
+  \]
+  \[
+    ji = -k,\quad kj = -i,\quad ik = -j.
+  \]
+
+  \vspace{0.3cm}
+  Ważne do zauważenia:
+  \[
+    ij \neq ji.
+  \]
+
+  \vspace{0.3cm}
+  \textbf{Wniosek:} Mnożenie kwaternionów \textbf{nie jest przemienne}.
+
+  \vspace{0.2cm}
+  
 \end{frame}
 
 \begin{frame}{Dowód: mnożenie kwaternionów nie jest przemienne}
@@ -386,7 +390,7 @@
   numerycznych.
 \end{frame}
 
-\begin{frame}{Tabela własności (schematycznie)}
+\begin{frame}{Tabela własności}
   \scriptsize
   \centering
   \begin{tabular}{lC C C C C C}
@@ -410,7 +414,7 @@
 \section{Oktoniony (ciekawostka)}
 % =================================================
 
-\begin{frame}{Oktoniony w dwóch zdaniach}
+\begin{frame}{Oktoniony w skrócie}
   \begin{itemize}
     \item Oktoniony $\mathbb{O}$ są 8-wymiarowe i mają 7 ``jednostek urojonych''.
     \item Mnożenie nie jest już nawet łączne,
@@ -420,7 +424,7 @@
   \vspace{0.3cm}
   Zastosowania:
   \begin{itemize}
-    \item teoretyczna fizyka wysokich energii, symetrie wyjątkowe (tzw. grupy wyjątkowe),
+    \item teoretyczna fizyka wysokich energii, symetrie wyjątkowe,
     \item matematyka czysto abstrakcyjna.
   \end{itemize}
 
@@ -438,14 +442,14 @@
     \item W $\mathbb{C}$: mnożenie jest przemienne ($zw=wz$).
     \item W $\mathbb{H}$: mnożenie \textbf{nie} jest przemienne ($ij = k$, ale $ji=-k$),
     ale jest łączne.
-    \item W $\mathbb{O}$: nawet łączność pada, tzn.
+    \item W $\mathbb{O}$: nawet łączność upada, tzn.
     $(ab)c \neq a(bc)$ w ogólności.
   \end{itemize}
 
   \vspace{0.4cm}
   \textbf{Intuicja:}
   Im większy wymiar (2,4,8,16,\dots), tym więcej swobody,
-  ale płacimy za to utratą ``ładnych'' własności algebraicznych.
+  ale płacimy za to utratą przydatnych własności algebraicznych.
 \end{frame}
 
 \begin{frame}{Dlaczego w praktyce wygrywają kwaterniony?}
