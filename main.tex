@@ -1,58 +1,42 @@
 \documentclass[aspectratio=169,11pt]{beamer}
 
-% --- język, polskie ogonki ---
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-% --- trochę ładniej ---
 \usetheme{Madrid}
 \usecolortheme{default}
 \usefonttheme{professionalfonts}
 \setbeamertemplate{navigation symbols}{}
 
-% matematyka
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{bm}
 
-% grafiki
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{svg}
 \graphicspath{{./}{./img/}{./images/}}
 
-% tabelki
 \usepackage{booktabs}
 \usepackage{array}
 \newcolumntype{C}{>{\centering\arraybackslash}m{1.7cm}}
 
-% żeby małe napisy pod wzorami wyglądały normalnie
 \newcommand{\tinyit}[1]{\tiny\textit{#1}}
 
-% -------------------------------------------------
-% Informacje tytułowe
-% -------------------------------------------------
 \title[Liczby wielowymiarowe]{Liczby wielowymiarowe}
 \author{Igor Józefowicz}
 \institute{Politechnika Gdańska}
 \date{3 listopada 2025}
 
-% =================================================
 \begin{document}
-% =================================================
 
 \frame{\titlepage}
 
-% -------------------------------------------------
 \begin{frame}{Plan prezentacji}
   \tableofcontents
 \end{frame}
 
-% (przeniesiono slajd Broom Bridge za "Krótka historia")
-
-% =================================================
 \section{Motywacja i historia}
-% =================================================
 
 \begin{frame}{Dlaczego w ogóle ``liczby wielowymiarowe''?}
   \begin{itemize}
@@ -108,9 +92,7 @@
 \end{frame}
 
 
-% =================================================
 \section{Liczby zespolone $\mathbb{C}$}
-% =================================================
 
 \begin{frame}{Definicja liczb zespolonych}
   \begin{columns}[T]
@@ -195,9 +177,7 @@
 \end{frame}
 
 
-% =================================================
 \section{Kwaterniony $\mathbb{H}$}
-% =================================================
 
 \begin{frame}{Kwaterniony -- definicja}
   Pytanie Hamiltona: \\
@@ -347,9 +327,7 @@
 \end{frame}
 
 
-% =================================================
 \section{Konstrukcja Cayley--Dicksona}
-% =================================================
 
 \begin{frame}{Podwajanie wymiaru: konstrukcja Cayley--Dicksona}
   \begin{itemize}
@@ -402,9 +380,7 @@
 \end{frame}
 
 
-% =================================================
 \section{Oktoniony (ciekawostka)}
-% =================================================
 
 \begin{frame}{Oktoniony w skrócie}
   \begin{itemize}
@@ -425,9 +401,7 @@
 \end{frame}
 
 
-% =================================================
 \section{Porównanie i podsumowanie}
-% =================================================
 
 \begin{frame}{Różnice w działaniach}
   \begin{itemize}
@@ -492,5 +466,4 @@
   
 \end{frame}
 
-% =================================================
 \end{document}
