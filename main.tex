@@ -107,18 +107,6 @@
   \end{columns}
 \end{frame}
 
-\begin{frame}{Hamilton i Broom Bridge (1843)}
-  	\textbf{Anegdota:} 16 października 1843 Hamilton wyrył wzór
-  $i^2 = j^2 = k^2 = ijk = -1$
-  na moście Broom Bridge w Dublinie.
-
-  \vspace{0.3cm}
-  \begin{center}
-    \includegraphics[width=0.5\textwidth]{broom_bridge_plaque.jpg}\\
-    {\tinyit{Źródło: \url{https://upload.wikimedia.org/wikipedia/commons/5/53/Broom_bridge_plaque.jpg}}}
-  \end{center}
-\end{frame}
-
 
 % =================================================
 \section{Liczby zespolone $\mathbb{C}$}
@@ -148,7 +136,7 @@
     \end{column}
     \begin{column}{0.5\textwidth}
       \centering
-      \includesvg[width=0.8\textwidth]{Complex_number_illustration.svg}\\[5pt]
+      \includesvg[width=0.75\textwidth]{Complex_number_illustration.svg}\\[5pt]
       \tinyit{Źródło: \url{https://commons.wikimedia.org/wiki/File:Complex_number_illustration.svg}}
     \end{column}
   \end{columns}
@@ -180,7 +168,6 @@
   \quad\text{oraz}\quad
   \arg(z_1 z_2) = \arg(z_1)+\arg(z_2).
   \]
-  \tinyit{czyli mnożenie liczby zespolonej to: skalowanie + obrót na płaszczyźnie}
 \end{frame}
 
 \begin{frame}{Zastosowania liczb zespolonych}
@@ -202,7 +189,7 @@
 \section{Kwaterniony $\mathbb{H}$}
 % =================================================
 
-\begin{frame}{Przejście do kwaternionów}
+\begin{frame}{Kwaterniony -- definicja}
   Pytanie Hamiltona: \\
   \emph{czy da się zrobić coś jak liczby zespolone, ale dla pełnych obrotów 3D?}
 
@@ -250,6 +237,28 @@
 
   \vspace{0.2cm}
   
+\end{frame}
+
+\begin{frame}{Hamilton i Broom Bridge (1843)}
+  	\textbf{Anegdota:} 16 października 1843 Hamilton wyrył wzór
+  $i^2 = j^2 = k^2 = ijk = -1$
+  na moście Broom Bridge w Dublinie.
+
+  \vspace{0.3cm}
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{broom_bridge_plaque.jpg}\\
+    {\tinyit{Źródło: \url{https://upload.wikimedia.org/wikipedia/commons/5/53/Broom_bridge_plaque.jpg}}}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Dowód: mnożenie kwaternionów nie jest przemienne}
+  \begin{block}{Teza}
+    W $\mathbb{H}$ zachodzi $ij \neq ji$.
+  \end{block}
+
+  \begin{proof}
+    Z definicji jednostek $i^2=j^2=k^2=ijk=-1$ mamy $ij=k$ oraz $ji=-k$, zatem $ij\neq ji$. \qedhere
+  \end{proof}
 \end{frame}
 
 \begin{frame}{Działania w $\mathbb{H}$}
